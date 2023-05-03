@@ -20,7 +20,9 @@ var certificate = fs.readFileSync('/etc/letsencrypt/live/alexinabox.de/cert.pem'
 https.createServer({
     key: privateKey,
     cert: certificate
-}, app.listen(3000, () => console.log('listening at 3000')));
+}, app).listen(3000, () => {
+    console.log('listening on port 3000');
+});
 
 //prevent cors errors
 app.use(cors())
