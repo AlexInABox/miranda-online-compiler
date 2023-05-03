@@ -15,8 +15,12 @@ function uploadFileFetch() {
             throw new Error('Upload failed');
         }
         console.log('Upload successful');
+        //reload page
+        location.reload();
     }).catch(error => {
         console.error(error);
+        //reload page
+        location.reload();
     });
 }
 
@@ -36,8 +40,12 @@ function sendCleanCommand() {
             throw new Error('Clean failed');
         }
         console.log('Clean successful');
+        //reload page
+        location.reload();
     }).catch(error => {
         console.error(error);
+        //reload page
+        location.reload();
     });
 }
 
@@ -92,8 +100,12 @@ function deleteFile(fileName) {
             throw new Error('Delete failed');
         }
         console.log('Delete successful');
+        //reload page
+        location.reload();
     }).catch(error => {
         console.error(error);
+        //reload page
+        location.reload();
     });
 }
 
