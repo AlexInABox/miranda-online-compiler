@@ -7,7 +7,7 @@ function uploadFileFetch() {
     formData.append('file', file);
     formData.append('containerID', containerID);
 
-    fetch('http://miranda.alexinabox.de:3000/upload', {
+    fetch('https://miranda.alexinabox.de:3000/upload', {
         method: 'POST',
         body: formData
     }).then(response => {
@@ -27,7 +27,7 @@ function sendCleanCommand() {
     var raw = JSON.stringify({
         "containerID": containerID
     });
-    fetch('http://miranda.alexinabox.de:3000/clean', {
+    fetch('https://miranda.alexinabox.de:3000/clean', {
         method: 'DELETE',
         headers: myHeaders,
         body: raw
@@ -43,7 +43,7 @@ function sendCleanCommand() {
 
 function getFileList() {
     const containerID = window.location.pathname.split('/')[2];
-    fetch('http://miranda.alexinabox.de:3000/getFileList', {
+    fetch('https://miranda.alexinabox.de:3000/getFileList', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -83,7 +83,7 @@ function deleteFile(fileName) {
         "containerID": containerID,
         "fileName": fileName
     });
-    fetch('http://miranda.alexinabox.de:3000/deleteFile', {
+    fetch('https://miranda.alexinabox.de:3000/deleteFile', {
         method: 'DELETE',
         headers: myHeaders,
         body: raw
@@ -107,7 +107,7 @@ function sendCommand() {
         "containerID": containerID,
         "command": message
     });
-    fetch('http://miranda.alexinabox.de:3000/executeCommand', {
+    fetch('https://miranda.alexinabox.de:3000/executeCommand', {
         method: 'POST',
         headers: myHeaders,
         body: raw
