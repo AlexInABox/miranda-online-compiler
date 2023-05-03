@@ -1,0 +1,56 @@
+.fileBrowser {
+    background: rgba(60, 59, 59, 0.6);
+    box-shadow: 0 8px 32px 0 rgba(135, 31, 31, 0.369);
+    backdrop-filter: blur(3px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.212);
+    max-width: 300px;
+    min-width: 100px;
+    width: fit-content;
+    overflow: hidden;
+}
+
+#fileList {
+    padding-left: 0%;
+    padding-right: 0%;
+    padding-top: 0%;
+    padding-bottom: 0%;
+    list-style-type: none;
+    width: 100%;
+}
+
+.listFile {
+    background: rgba(54, 127, 211, 0.692);
+    backdrop-filter: blur(3px);
+    border: 1px solid rgba(255, 255, 255, 0.212);
+    padding-top: 12px;
+    padding-bottom: 12px;
+    width: 100%;
+    height: 20px;
+    list-style-type: none;
+}
+
+.fileName {
+    display: inline-block;
+    margin: 0%;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.deleteButton {
+    position: relative;
+    float: right;
+    margin-right: 10px;
+}
+
+.terminal {
+    background: rgba(60, 59, 59, 0.6);
+    box-shadow: 0 8px 32px 0 rgba(135, 31, 31, 0.369);
+    backdrop-filter: blur(3px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.212);
+    max-width: 500px;
+    min-width: 100px;
+    width: fit-content;
+    overflow: hidden;
+}

@@ -1,0 +1,31 @@
+{
+  "name": "miranda-online-compiler",
+  "version": "0.0.1",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexInABox/miranda-online-compiler.git"
+  },
+  "author": "alexinabox",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/AlexInABox/miranda-online-compiler/issues"
+  },
+  "homepage": "https://github.com/AlexInABox/miranda-online-compiler#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "fs-extra": "^11.1.1",
+    "multer": "^1.4.5-lts.1",
+    "path": "^0.12.7",
+    "pug": "^3.0.2",
+    "uuid": "^9.0.0",
+    "ws": "^8.13.0"
+  }
+}

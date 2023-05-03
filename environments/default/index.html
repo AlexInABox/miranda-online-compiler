@@ -1,0 +1,40 @@
+<head>
+    <link rel="stylesheet" href="./index.css">
+    <script src="https://cdn.jsdelivr.net/npm/xterm@4.15.0/lib/xterm.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm@4.15.0/css/xterm.css" />
+</head>
+
+<body background="http://alexinabox.de/me/assets/backround.gif"
+    style="background-repeat: no-repeat; background-size: cover;">
+    <h1>
+        miranda - here you can upload your .m files and run them on the server!
+    </h1>
+    <form>
+        <input type="file" name="myFile">
+        <input type="button" value="Upload" onclick="uploadFileFetch()">
+    </form>
+    <button onclick="sendCleanCommand()">Clean</button>
+
+    <div class="wrapper">
+        <div class="fileBrowser">
+            <ul id="fileList">
+                <li class="listFile">
+                    <p class="fileName">test.m</p>
+                    <button class="deleteButton" onclick="deleteFileFetch(this)">Delete</button>
+                </li>
+                <li class="listFile">
+                    <p class="fileName">agregat.m</p>
+                    <button class="deleteButton" onclick="deleteFileFetch(this)">Delete</button>
+                </li>
+                <li class="listFile">
+                    <p class="fileName">niemaslNiemalsNie.m</p>
+                    <button class="deleteButton" onclick="deleteFileFetch(this)">Delete</button>
+                </li>
+            </ul>
+        </div>
+        <div id="terminal" class="terminal"></div>
+        <textarea id="terminalInput" class="terminalInput"></textarea>
+        <button onclick="sendCommand()">Send</button>
+    </div>
+    <script src="./index.js"></script>
+</body>
