@@ -1,25 +1,27 @@
 function uploadFileFetch() {
     const fileInput = document.querySelector('input[type="file"]');
-    const file = fileInput.files[0];
-    const containerID = window.location.pathname.split('/')[2];
+    for (const file of fileInput.files) {
+        const containerID = window.location.pathname.split('/')[2];
 
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append('containerID', containerID);
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('containerID', containerID);
 
-    fetch('https://miranda.alexinabox.de:3000/upload', {
-        method: 'POST',
-        body: formData
-    }).then(response => {
-        if (!response.ok) {
-            throw new Error('Upload failed');
-        }
-        console.log('Upload successful');
-        getFileList();
-    }).catch(error => {
-        console.error(error);
-        getFileList();
-    });
+        fetch('https://miranda.alexinabox.de:3000/upload', {
+            method: 'POST',
+            body: formData
+        }).then(response => {
+            if (!response.ok) {
+                throw new Error('Upload failed');
+            }
+            console.log('Upload successful');
+            getFileList();
+        }).catch(error => {
+            console.error(error);
+            getFileList();
+        });
+    }
+    console.log('Upload complete');
 }
 
 function sendCleanCommand() {
