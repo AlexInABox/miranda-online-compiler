@@ -15,12 +15,10 @@ function uploadFileFetch() {
             throw new Error('Upload failed');
         }
         console.log('Upload successful');
-        //reload page
-        location.reload();
+        getFileList();
     }).catch(error => {
         console.error(error);
-        //reload page
-        location.reload();
+        getFileList();
     });
 }
 
@@ -40,12 +38,10 @@ function sendCleanCommand() {
             throw new Error('Clean failed');
         }
         console.log('Clean successful');
-        //reload page
-        location.reload();
+        getFileList();
     }).catch(error => {
         console.error(error);
-        //reload page
-        location.reload();
+        getFileList();
     });
 }
 
