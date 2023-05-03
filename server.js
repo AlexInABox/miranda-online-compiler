@@ -2,6 +2,7 @@
 //and returns the url of the new subdirectory
 
 const express = require('express');
+const https = require('https');
 const app = express();
 var cors = require('cors')
 const path = require('path');
@@ -13,8 +14,14 @@ var upload = multer();
 var bodyParser = require('body-parser');
 var pug = require('pug');
 
-//listen on port 3000
-app.listen(3000, () => console.log('listening at 3000'));
+var privateKey = fs.readFileSync('/etc/letsencrypt/live/alexinabox.de/privatekey.pem');
+var certificate = fs.readFileSync('/etc/letsencrypt/live/alexinabox.de/certificate.pem');
+
+https.createServer({
+    key: privateKey,
+    cert: certificate
+}, app.listen(3000, () => console.log('listening at 3000')));
+
 //prevent cors errors
 app.use(cors())
 
