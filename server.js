@@ -14,8 +14,8 @@ var upload = multer();
 var bodyParser = require('body-parser');
 var pug = require('pug');
 
-var privateKey = fs.readFileSync('/etc/letsencrypt/live/alexinabox.de/privatekey.pem');
-var certificate = fs.readFileSync('/etc/letsencrypt/live/alexinabox.de/certificate.pem');
+var privateKey = fs.readFileSync('/etc/letsencrypt/live/alexinabox.de/privkey.pem');
+var certificate = fs.readFileSync('/etc/letsencrypt/live/alexinabox.de/cert.pem');
 
 https.createServer({
     key: privateKey,
