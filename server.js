@@ -160,17 +160,51 @@ app.post('/executeCommand', express.json(), async (req, res) => {
     res.send(result);
 });
 
-const { execSync } = require('child_process');
+const { execSync, spawn } = require('child_process');
 
 function executeCommand(command, cwd) {
-    console.log('Executing command: ' + command);
+    const childProcess = spawn(command, { cwd: cwd, shell: true });
+    let result = '';
+
+    childProcess.stdout.on('data', (data) => {
+        result += data.toString();
+        console.log(data.toString());
+    }
+    );
+
+    childProcess.stderr.on('data', (data) => {
+        result += data.toString();
+        console.log(data.toString());
+    }
+    );
+
+    childProcess.on('close', (code) => {
+        console.log('Command exited with code ' + code);
+    }
+    );
+}
+
+app.post('/compileFile', express.json(), async (req, res) => {
+    console.log('Compile file request received');
+
+    const containerID = req.body.containerID;
+    const fileName = req.body.fileName;
+    const containerDir = path.join(__dirname, 'environments', containerID, 'container');
+    const result = await compileFile(fileName, containerDir);
+    res.send(result);
+});
+
+function compileFile(fileName, cwd) { //here we open the miranda file and compile it
+    console.log('Compiling file: ' + fileName);
     console.log('CWD: ' + cwd);
     try {
-        const result = execSync(command, { cwd: cwd }).toString();
+        const result = execSync('mira ' + fileName, { cwd: cwd }).toString();
         console.log('Result: ' + result);
         return result;
-    } catch (error) {
+    }
+    catch (error) {
         console.log('Error: ' + error);
         return error.toString();
     }
 }
+

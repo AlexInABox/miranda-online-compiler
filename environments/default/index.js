@@ -72,7 +72,7 @@ function getFileList() {
                 b.className = 'deleteButton';
                 b.innerHTML = 'Delete';
                 li.appendChild(p);
-                li.innerHTML = li.innerHTML + '<button class="deleteButton" onclick=deleteFile("' + file + '")>Delete</button>';
+                li.innerHTML = li.innerHTML + '<button class="deleteButton" onclick=deleteFile("' + file + '")>Delete</button> <button class="compileButton" onclick=compileFile("' + file + '")>Compile</button>';
                 fileList.appendChild(li);
             });
         });
@@ -118,6 +118,28 @@ function sendCommand() {
         "command": message
     });
     fetch('https://miranda.alexinabox.de:3000/executeCommand', {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw
+    }).then(response => response.text())
+        .then(data => {
+            console.log(data);
+            const terminal = document.getElementById('terminal');
+            const p = document.createElement('p');
+            p.innerHTML = data;
+            terminal.appendChild(p);
+        });
+}
+
+function compileFile(fileName) {
+    const containerID = window.location.pathname.split('/')[2];
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    var raw = JSON.stringify({
+        "containerID": containerID,
+        "fileName": fileName
+    });
+    fetch('https://miranda.alexinabox.de:3000/compileFile', {
         method: 'POST',
         headers: myHeaders,
         body: raw

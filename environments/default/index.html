@@ -21,6 +21,7 @@
                 <li class="listFile">
                     <p class="fileName">test.m</p>
                     <button class="deleteButton" onclick="deleteFileFetch(this)">Delete</button>
+                    <button onclick="compileFile()">Compile</button>
                 </li>
                 <li class="listFile">
                     <p class="fileName">agregat.m</p>
@@ -36,5 +37,7 @@
         <textarea id="terminalInput" class="terminalInput"></textarea>
         <button onclick="sendCommand()">Send</button>
     </div>
+
+    <button onclick="compileFile()">Compile</button>
     <script src="./index.js"></script>
 </body>
