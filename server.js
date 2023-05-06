@@ -197,6 +197,7 @@ app.post('/compileFile', express.json(), async (req, res) => {
 function compileFile(fileName, cwd) { //here we open the miranda file and compile it
     console.log('Compiling file: ' + fileName);
     console.log('CWD: ' + cwd); //cwd is the current working directory
+    console.log('Command: ' + 'mira ' + fileName + ' >> ' + cwd + '/log.txt');
     try {
         execSync('mira ' + fileName + ' >> ' + cwd + '/log.txt', { cwd: cwd });
         return fs.readFileSync(cwd + '/log.txt').toString();
