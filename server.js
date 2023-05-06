@@ -198,8 +198,8 @@ function compileFile(fileName, cwd) { //here we open the miranda file and compil
     console.log('Compiling file: ' + fileName);
     console.log('CWD: ' + cwd); //cwd is the current working directory
     try {
-        execSync('mira ' + fileName + ' >> ' + cwd + 'log.txt', { cwd: cwd }).toString();
-        return fs.readFileSync(cwd + 'log.txt').toString();
+        execSync('mira ' + fileName + ' >> ' + cwd + '/log.txt', { cwd: cwd }).toString();
+        return fs.readFileSync(cwd + '/log.txt').toString();
     }
     catch (error) {
         console.log('Error: ' + error);
