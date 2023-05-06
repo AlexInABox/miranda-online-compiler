@@ -160,7 +160,7 @@ app.post('/executeCommand', express.json(), async (req, res) => {
     res.send(result);
 });
 
-const { execSync, spawn } = require('child_process');
+const { execSync, spawn, exec } = require('child_process');
 
 function executeCommand(command, cwd) {
     const childProcess = spawn(command, { cwd: cwd, shell: true });
@@ -196,11 +196,10 @@ app.post('/compileFile', express.json(), async (req, res) => {
 
 function compileFile(fileName, cwd) { //here we open the miranda file and compile it
     console.log('Compiling file: ' + fileName);
-    console.log('CWD: ' + cwd);
+    console.log('CWD: ' + cwd); //cwd is the current working directory
     try {
-        const result = execSync('mira ' + fileName, { cwd: cwd }).toString();
-        console.log('Result: ' + result);
-        return result;
+        execSync('mira ' + fileName + ' >> ' + cwd + 'log.txt', { cwd: cwd }).toString();
+        return fs.readFileSync(cwd + 'log.txt').toString();
     }
     catch (error) {
         console.log('Error: ' + error);
